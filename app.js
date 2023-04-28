@@ -3,7 +3,7 @@ const buttons = document.querySelector(".btnContainer")
 const menuArea = document.querySelector(".menuArea")
 // console.log(menuArea)
 
-const btns = ["All", "Breakfast", "Lunch", "Shakes", "Dinner",];
+const btns = ["All", "Breakfast", "Lunch", "Shakes", "Dinner", "Eid Spice"];
 const menuData = [
     {
         id: 1,
@@ -16,7 +16,7 @@ const menuData = [
     {
         id: 2,
         title: "diner double",
-        category: "lunch",
+        category: "eid spice",
         price: 13.99,
         scr: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-2.jpeg",
         desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
@@ -124,27 +124,15 @@ buttonName.forEach((element) => {
     element.addEventListener('click', () => {
         // console.log('hi')
         let filter = []
-        if (element.innerHTML == 'Breakfast') {
+        const elementLowerCase = element.innerHTML.toLowerCase()
+        // console.log(elementLowerCase)
+
+        if (elementLowerCase !== "all") {
             const filteredArray =  menuData.filter((item) => {
-                return item.category == "breakfast"
+                return item.category == elementLowerCase
             })
             arrayFiltration(filteredArray, filter)
-        } else if(element.innerHTML == 'Lunch'){
-            const filteredArray =  menuData.filter((item) => {
-                return item.category == "lunch"
-            })
-            arrayFiltration(filteredArray, filter)
-        } else if(element.innerHTML == 'Shakes'){
-            const filteredArray =  menuData.filter((item) => {
-                return item.category == "shakes"
-            })
-            arrayFiltration(filteredArray, filter)
-        } else if(element.innerHTML == 'Dinner'){
-            const filteredArray =  menuData.filter((item) => {
-                return item.category == "dinner"
-            })
-            arrayFiltration(filteredArray, filter)
-        } else{
+        }  else{
             menuArea.innerHTML = myMenu.join("")
         }
     })
